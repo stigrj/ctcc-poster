@@ -114,6 +114,14 @@ UiT - The Arctic University of Norway, NO-9037 Troms{\o}, Norway \\
 \LHead{Conclusions}
 \end{textblock}
 
+\begin{textblock}{5}(10.4,11.75)
+\Subhead{LDA}
+\end{textblock}
+
+\begin{textblock}{5}(10.05,15.25)
+\Subhead{Hartree-Fock}
+\end{textblock}
+
 % First column
 
 \begin{textblock}{9.3}(0,4.5)
@@ -155,7 +163,7 @@ By recursive application we get an alternative (and sparse)
 The MRMW basis allows for efficient and linear-scaling application of integral
 operators in the form
 \begin{equation}
-    \Helmholtz{f}(r) = \int G(r-r')\Big[f(r')\Big]\ud r'
+    \hat{G}\big[f\big](r) = \int G(r-r')\Big[f(r')\Big]\ud r'
 \end{equation}
 including the Bound-State Helmholtz (BSH) operator with integral convolution 
 kernel
@@ -176,12 +184,12 @@ The Kohn-Sham/Hartree-Fock equations
 \begin{equation}
     \big[\kinetic + \potential\big]\orbital_i = \epsilon_i\orbital_i
 \end{equation}
-is written in integral form using the BSH operator\cite{Harrison}, 
+is written in integral form using the BSH operator, 
 which is the inverse of the shifted kinetic operator
 \begin{equation}
-    2\hat{G}   = \big[\kinetic-\epsilon_i\big]^{-1}
+    2\hat{G}_i   = \Big[\kinetic-\epsilon_i\Big]^{-1}
 \end{equation}
-The equations can be solved iteratively
+The equations can be solved iteratively\cite{Harrison}
 \begin{equation}
     \label{eq:unperturbed_scf}
     \orbital^{n+1}_i = -2 \Helmholtz{\potential^n\orbital^n_i}
@@ -211,12 +219,18 @@ and the response functions $x_i$ and $y_i$ are given below.
 \end{textblock}
 
 \begin{textblock}{4.3}(5.0,16.3)
-\begin{equation}
-    2\hat{G}^{(\pm)} = \Big[\hat{T} - (\epsilon \pm \omega)\Big]^{-1} 
-\end{equation}
+Solving the SCF problem of the perturbed system up to first order yields a
+Sternheimer\cite{Mahan} (coupled perturbed HF/KS) equation for the perturbed 
+orbitals $x_i$ and $y_i$. Using the projector onto the occupied space
 \begin{equation}
     \pert{\density}{0} = \sum_i \ket{\orbital_i}\bra{\orbital_i}
 \end{equation}
+and the BSH operator of the unperturbed orbital energy $\epsilon_i$ shifted by 
+the perturbing frequency $\omega$
+\begin{equation}
+    2\hat{G}_i^{(\pm)} = \big[\hat{T} - (\epsilon_i \pm \omega)\big]^{-1} 
+\end{equation}
+we arrive at the coupled linear response equations\cite{Sekino,Yanai}
 \end{textblock}
 
 \begin{textblock}{9.3}(0,19.7)
@@ -250,23 +264,33 @@ $\pert{\hamiltonian}{a}$ and $\pert{\hamiltonian}{b}$ are then obtained as
 \begin{textblock}{5.0}(4.3,21.3)
 \begin{eqnarray}
     \pert{\coulomb}{1} \orbital_p &=& 
-        \int\frac{\pert{\rho}{1}(r',r')\orbital_p(r)}{|r-r'|} \ud r' \\
+        \int\frac{\pert{\tilde{\rho}}{1}(r',r')\orbital_p(r)}{|r-r'|} \ud r' \\
     \pert{\exchange}{1} \orbital_p &=&
-        \int\frac{\pert{\rho}{1}(r,r')\orbital_p(r')}{|r-r'|} \ud r' \\
+        \int\frac{\pert{\tilde{\rho}}{1}(r,r')\orbital_p(r')}{|r-r'|} \ud r' \\
     \pert{\xc}{1} \orbital_p &=& 
         \bigg[\frac{\delta^2 E_{xc}}{\delta \rho^2}
-        \big[\pert{\rho}{0}\big]*\pert{\rho}{1}\bigg] \orbital_p
+        \big[\pert{\rho}{0}\big]*\pert{\tilde{\rho}}{1}\bigg] \orbital_p
 \end{eqnarray}
 \end{textblock}
 
 % Second column
 
 \begin{textblock}{7}(10,4.5)
-This is a test to see how long the line segment can be before we get a line
-break. Hopefully this will happen soon, because I am running out of things to
-write.
+We test the performence of our linear response solver by computing a set of
+important electric and magnetic properties on the chiral molecule methyloxirane
+(CH$_3$CHCH$_2$O).
 \end{textblock}
 
+\begin{textblock}{7}(10,19.0)
+We have shown that by making use of the properties of the multiresolution
+MW basis we have strict control of the basis set error, and we are able to 
+reach the basis set limit (within a predefined accuracy) for several linear
+response properties. The method does not rely on gauge including or 
+preoptimized basis set in order to give high quality results.
+
+The calculations are at present still demanding, both in terms of memory and CPU
+time, and are competitive to GTOs only when high accuracy is required.
+\end{textblock}
 
 \begin{textblock}{7}(10,20.5)
 % Change the reference heading style:
@@ -332,24 +356,26 @@ write.
 \begin{table}
     \normalsize
     \centering
-    \begin{tabular}{|r|cc|cc|}
+    \begin{tabular}{|r|cc|rr|}
 	\hline&
         \multicolumn{2}{c|}{Polarizability (a.u.)}&
         \multicolumn{2}{c|}{Optical rotation (a.u.)}\\
-                         & Static        & Dynamic       & $\beta$       & $\alpha$      \\
+                         & Static        & Dynamic       &
+                         \multicolumn{1}{c}{$\beta$}&
+                         \multicolumn{1}{c|}{$\alpha$}\\
 	\hline
 	\hspace{55mm}\   &\hspace{62mm}\ &\hspace{62mm}\ &\hspace{62mm}\ &\hspace{62mm}\ \\
 %LDA
-	MRChem $10^{-2}$ & 44.0764       & 45.2747       &  0.009376     &   6.2440      \\
-	MRChem $10^{-3}$ & 44.0939       & 45.2907       &  0.010427     &   6.9439      \\
-	MRChem $10^{-4}$ & 44.0935       & 45.2903       &  0.012256     &   8.1619      \\
-	                 &               &               &               &               \\
-	aug-cc-pVQZ      & 44.1326       &               &               &               \\
-%	aug-cc-pVTZ      & 44.1155       & 45.3170       &  0.009111     &   6.0673      \\
-	aug-cc-pVDZ      & 44.0050       & 45.2025       &  0.000776     &   0.5170      \\
-	    cc-pVQZ      & 42.3602       & 43.4064       &  0.001239     &   0.8249      \\
-%	    cc-pVTZ      & 40.6143       & 41.5743       & -0.019612     & -13.0606      \\
-	    cc-pVDZ      & 36.5586       & 37.3993       & -0.065879     & -43.8711      \\
+	MRChem $10^{-2}$ & 44.0764       & 45.2747       & 0.009376\ \ \ \ \ \ \ &   6.2440\ \ \ \ \ \ \ \ \ \\
+	MRChem $10^{-3}$ & 44.0939       & 45.2907       & 0.010427\ \ \ \ \ \ \ &   6.9439\ \ \ \ \ \ \ \ \ \\
+	MRChem $10^{-4}$ & 44.0935       & 45.2903       & 0.010556\ \ \ \ \ \ \ &   7.0298\ \ \ \ \ \ \ \ \ \\
+	                 &               &               &                       &                           \\
+	aug-cc-pVQZ      & 44.1326       & 45.3380       & 0.009861\ \ \ \ \ \ \ &   6.5669\ \ \ \ \ \ \ \ \ \\
+%	aug-cc-pVTZ      & 44.1155       & 45.3170       & 0.009111\ \ \ \ \ \ \ &   6.0673\ \ \ \ \ \ \ \ \ \\
+	aug-cc-pVDZ      & 44.0050       & 45.2025       & 0.000776\ \ \ \ \ \ \ &   0.5170\ \ \ \ \ \ \ \ \ \\
+	    cc-pVQZ      & 42.3602       & 43.4064       & 0.001239\ \ \ \ \ \ \ &   0.8249\ \ \ \ \ \ \ \ \ \\
+%	    cc-pVTZ      & 40.6143       & 41.5743       &-0.019612\ \ \ \ \ \ \ & -13.0606\ \ \ \ \ \ \ \ \ \\
+	    cc-pVDZ      & 36.5586       & 37.3993       &-0.065879\ \ \ \ \ \ \ & -43.8711\ \ \ \ \ \ \ \ \ \\
 	                 &               &               &               &               \\
 %HF
 %	MRChem $10^{-2}$ &               &               &               &               \\
@@ -376,9 +402,9 @@ write.
 \begin{table}
     \normalsize
     \centering
-    \begin{tabular}{|r|ccc|ccc|}
+    \begin{tabular}{|r|crr|ccc|}
 \hline                   & \multicolumn{3}{c|}{Magnetizability (a.u.)}   &\multicolumn{3}{c|}{NMR shielding (ppm)}            \\
-                         & GIAO          & $(0,0,0)$     & $(5,5,5)$     & Dia             & Para             & Total    \\
+                         & GIAO          & $(0,0,0)$\ \  & $(5,5,5)$\ \  & Dia             & Para             & Total    \\
 \hline  \hspace{55mm}\   &\hspace{40mm}\ &\hspace{40mm}\ &\hspace{40mm}\ &\hspace{40mm}\ &\hspace{40mm}\ &\hspace{40mm}\ \\
 %LDA
 %	MRChem $10^{-2}$ &               &  -9.3721      &  -9.5864      &  444.6586     & -158.1337     &  286.5249     \\
@@ -393,16 +419,16 @@ write.
 %	    cc-pVDZ      & -9.1789       & -18.4454      &-133.9755      &  448.7952     & -146.7033     &  302.0919     \\
 %	                 &               &               &               &               &               &               \\
 %HF
-	MRChem $10^{-2}$ &               &  -9.5497      &  -9.9222      &  446.7869     & -103.6166     &  343.1703     \\
-	MRChem $10^{-3}$ &               &  -9.4730      &  -9.4363      &  447.3444     &  -91.7855     &  355.5589     \\
-	MRChem $10^{-4}$ &               &  -9.4758      &  -9.4795      &  447.3089     &  -90.9386     &  356.3704     \\
+	MRChem $10^{-2}$ &               &  -9.5497\ \ \ &  -9.9222\ \ \ &  446.7869     &  -96.6166     &  350.1703     \\
+	MRChem $10^{-3}$ &               &  -9.4730\ \ \ &  -9.4363\ \ \ &  447.3444     &  -91.7855     &  355.5589     \\
+	MRChem $10^{-4}$ &               &  -9.4758\ \ \ &  -9.4795\ \ \ &  447.3089     &  -90.9386     &  356.3704     \\
 	                 &               &               &               &               &               &               \\
-	aug-cc-pVQZ      & -9.4736       & -10.5253      & -26.0533      &  447.7508     &  -90.6691     &  357.0817     \\
-%	aug-cc-pVTZ      & -9.4822       & -12.4117      & -54.9201      &  448.7949     &  -91.6336     &  357.1613     \\
-	aug-cc-pVDZ      & -9.5369       & -15.4438      &-101.6430      &  451.0119     &  -88.5778     &  362.4341     \\
-	    cc-pVQZ      & -9.4681       & -10.8019      & -29.2395      &  447.7833     &  -89.6304     &  358.1529     \\
-%	    cc-pVTZ      & -9.4709       & -13.3872      & -65.8671      &  448.9517     &  -91.6778     &  357.2739     \\
-	    cc-pVDZ      & -9.4924       & -19.0342      &-140.0203      &  451.6103     &  -87.4153     &  364.1950     \\
+	aug-cc-pVQZ      & -9.4736       & -10.5253\ \ \ & -26.0533\ \ \ &  447.7508     &  -90.6691     &  357.0817     \\
+%	aug-cc-pVTZ      & -9.4822       & -12.4117\ \ \ & -54.9201\ \ \ &  448.7949     &  -91.6336     &  357.1613     \\
+	aug-cc-pVDZ      & -9.5369       & -15.4438\ \ \ &-101.6430\ \ \ &  451.0119     &  -88.5778     &  362.4341     \\
+	    cc-pVQZ      & -9.4681       & -10.8019\ \ \ & -29.2395\ \ \ &  447.7833     &  -89.6304     &  358.1529     \\
+%	    cc-pVTZ      & -9.4709       & -13.3872\ \ \ & -65.8671\ \ \ &  448.9517     &  -91.6778     &  357.2739     \\
+	    cc-pVDZ      & -9.4924       & -19.0342\ \ \ &-140.0203\ \ \ &  451.6103     &  -87.4153     &  364.1950     \\
 	                 &               &               &               &               &               &               \\
 	\hline
 	\end{tabular}
