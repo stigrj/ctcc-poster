@@ -1,0 +1,88 @@
+%\newtheorem{lemma}{Proposition}
+\newcommand{\fixme}[1]{{\small\em \color{red} #1 \normalsize}}
+
+\newcommand{\unitboxd}{\ensuremath{\left[0,1\right]^d}}
+\newcommand{\Exp}[1]  {\ensuremath{\cdot 10^{#1}}}
+\newcommand{\etal}{{\emph{et al.}\ }}
+\newcommand{\abinitio}{{\emph{ab initio }\ }}
+\newcommand{\mycomment}[1]{{\large \bf #1}}
+\newlength{\dch}
+\newlength{\sch}
+\newcommand{\ud}{\ensuremath{\,\mathrm{d}}}
+\newcommand{\mydef}{\stackrel{\text{def}}{\hbox{=}}}
+\newcommand{\setdch}{\settoheight{\dch}{\nscu{d}}}
+\newcommand{\setsch}{\settoheight{\sch}{\nscucd{s}}}
+\newcommand{\filter}[2]{\ensuremath{F_{(#1,#2)}}}
+\newcommand{\ndfilter}[2]{\ensuremath{\mathcal{F}_{(#1,#2)}}}
+\newcommand{\dsvec}[2]{\ensuremath{\begin{pmatrix} \rule{0mm}{\dch} d \\ \rule{0mm}{\sch} s \end{pmatrix}^{#1}_{#2}}}
+\newcommand{\dsvbu}[2]{\ensuremath{\begin{pmatrix} \rule{0mm}{\dch} \nsbu{d} \\ \rule{0mm}{\sch} \nsbu{s} \end{pmatrix}^{#1}_{#2}}}
+\newcommand{\dsvcu}[2]{\ensuremath{\begin{pmatrix} \rule{0mm}{\dch} \nscu{d} \\ \rule{0mm}{\sch} \nscu{s} \end{pmatrix}^{#1}_{#2}}}
+\newcommand{\dsvcucd}[2]{\ensuremath{\begin{pmatrix} \rule{0mm}{\dch} \nscu{d} \\ \rule{0mm}{\sch} \nscucd{s} \end{pmatrix}^{#1}_{#2}}}
+\newcommand{\nsopABCT}[2][]{\ensuremath{\begin{pmatrix} \rule{0mm}{\dch} A & B \\ \rule{0mm}{\sch} C & T\end{pmatrix}^{#2}_{#1}}}
+\newcommand{\nsopABC}[1]{\ensuremath{\begin{pmatrix} \rule{0mm}{\dch} A & B \\ \rule{0mm}{\sch} C & 0\end{pmatrix}^{#1}}}
+\newcommand{\mwtrans}[2]{\ensuremath{W_{#1\leftarrow #2}}}
+
+\newcommand{\nscf}[1]{\ensuremath{\tilde{#1}}}
+\newcommand{\nsabf}[1]{\ensuremath{\tilde{#1}}}
+\newcommand{\nstf}[1]{\ensuremath{\hat{#1}}}
+
+\newcommand{\nscucd}[1]{\ensuremath{\underset{\circ}{\overset{\circ}{#1}}}}
+\newcommand{\nsbubd}[1]{\ensuremath{\underset{\bullet}{\overset{\bullet}{#1}}}}
+\newcommand{\nscu}[1]{\ensuremath{\overset{\circ}{#1}}}
+\newcommand{\nscd}[1]{\ensuremath{\underset{\circ}{#1}}}
+\newcommand{\nsbu}[1]{\ensuremath{\overset{\bullet}{#1}}}
+\newcommand{\nsbd}[1]{\ensuremath{\underset{\bullet}{#1}}}
+
+\newcommand{\bds}[1]{\ensuremath{\boldsymbol{#1}}}
+\newcommand{\wcoef}[3]{\ensuremath{\bds{#1}_{#2}^{#3}}}
+\newcommand{\wcoefu}[3]{\ensuremath{\hat{\bds{#1}}_{#2}^{#3}}}
+\newcommand{\wcoefd}[3]{\ensuremath{\check{\bds{#1}}_{#2}^{#3}}}
+\newcommand{\wcoefud}[3]{\ensuremath{\tilde{\bds{#1}}_{#2}^{#3}}}
+\newcommand{\wtrans}[2]{\ensuremath{W_{{\left[#1\right]}\leftarrow {\left[#2\right]}}}}
+\newcommand{\scaling}{\phi}
+\newcommand{\wavelet}{\psi}
+\newcommand{\scalwav}{\varphi}
+\newcommand{\scalingnd}{\phi}
+\newcommand{\waveletnd}{\psi}
+\newcommand{\scalwavnd}{\varphi}
+
+\newcommand{\mycite}[1]{\cite{#1}}
+
+\newcommand{\bs}[1]{\ensuremath{\boldsymbol #1}}
+\newcommand{\Wavefunction}{\ensuremath{\Psi}}
+\newcommand{\wavefunction}{\ensuremath{\psi}}
+
+\newcommand{\orbital}{\ensuremath{\varphi}}
+\newcommand{\density}{\ensuremath{\hat{\rho}}}
+\newcommand{\nuclear}{\ensuremath{\hat{V}_{nuc}}}
+\newcommand{\coulomb}{\ensuremath{\hat{J}}}
+\newcommand{\xc}{\ensuremath{\hat{V}_{xc}}}
+\newcommand{\exchange}{\ensuremath{\hat{K}}}
+\newcommand{\potential}{\ensuremath{\hat{V}}}
+\newcommand{\kinetic}{\ensuremath{\hat{T}}}
+\newcommand{\perturbation}{\ensuremath{\hat{h}}}
+\newcommand{\effPot}{\ensuremath{v_{eff}}}
+\newcommand{\nucPot}{\ensuremath{v_{nuc}}}
+\newcommand{\elPot}{\ensuremath{v_{el}}}
+\newcommand{\xcPot}{\ensuremath{v_{xc}}}
+\newcommand{\fockMat}{\ensuremath{F}}
+\newcommand{\fockOper}{\ensuremath{\hat{F}}}
+\newcommand{\poisson}{\ensuremath{P(r-r')}}
+\newcommand{\Poisson}[1]{\ensuremath{\hat{P}\Big[#1\Big]}}
+\newcommand{\helmholtz}{\ensuremath{G^{\mu}(r-r')}}
+\newcommand{\Helmholtz}[1]{\ensuremath{\hat{G}\left[#1\right]}}
+\newcommand{\Helmholtzp}[1]{\ensuremath{\hat{G}^{(+)}\bigg[#1\bigg]}}
+\newcommand{\Helmholtzm}[1]{\ensuremath{\hat{G}^{(-)}\bigg[#1\bigg]}}
+\newcommand{\Helm}{\ensuremath{\hat{G}}}
+\newcommand{\hamiltonian}{\ensuremath{\hat{h}}}
+
+\newcommand{\pert}[2]{\ensuremath{#1^{(#2)}}}
+\newcommand{\HopB}{\ensuremath{\pert{\hat{\boldsymbol{h}}}{B}}}
+\newcommand{\HopM}{\ensuremath{\pert{\hat{\boldsymbol{h}}}{M_K}}}
+\newcommand{\HopBB}{\ensuremath{\pert{\hat{\boldsymbol{h}}}{B,B}}}
+\newcommand{\HopMB}{\ensuremath{\pert{\hat{\boldsymbol{h}}}{M_K,B}}}
+\newcommand{\HmatB}{\ensuremath{\pert{\boldsymbol{h}}{B}}}
+\newcommand{\HmatM}{\ensuremath{\pert{\boldsymbol{h}}{M_K}}}
+\newcommand{\HmatBB}{\ensuremath{\pert{\boldsymbol{h}}{B,B}}}
+\newcommand{\HmatMB}{\ensuremath{\pert{\boldsymbol{h}}{M_K,B}}}
+
