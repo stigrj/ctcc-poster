@@ -331,7 +331,7 @@ time, and are competitive to GTOs only when high accuracy is required.
     \normalsize
     \centering
     \begin{tabular}{|r|cc|cc|}
-\hline                   &\multicolumn{2}{c|}{Energy (a.u.)}&            &               \\
+\hline                   &\multicolumn{2}{c|}{\textbf{Energy (a.u.)}}&   &               \\
                          &Hartree-Fock   &LDA            &               &               \\
 \hline  \hspace{55mm}\   &\hspace{62mm}\ &\hspace{62mm}\ &\hspace{62mm}\ &\hspace{62mm}\ \\
 	MRChem $10^{-2}$ & -192.0425     & -191.5975     &               &               \\
@@ -352,14 +352,16 @@ time, and are competitive to GTOs only when high accuracy is required.
 
 \begin{textblock}{7}(10,11.5)
 \footnotesize
-\textbf{Table 2}:
+\textbf{Table 2}: Polarizability and optical rotation calculated at DFT (SVWN5) 
+level of theory. Dynamic response at the sodium D line (589.3 nm) wavelength.
+GTO calculations by Dalton\cite{Dalton}.
 \begin{table}
     \normalsize
     \centering
     \begin{tabular}{|r|cc|rr|}
 	\hline&
-        \multicolumn{2}{c|}{Polarizability (a.u.)}&
-        \multicolumn{2}{c|}{Optical rotation (a.u.)}\\
+        \multicolumn{2}{c|}{\textbf{Polarizability (a.u.)}}&
+        \multicolumn{2}{c|}{\textbf{Optical rotation (a.u.)}}\\
                          & Static        & Dynamic       &
                          \multicolumn{1}{c}{$\beta$}&
                          \multicolumn{1}{c|}{$\alpha$}\\
@@ -398,13 +400,17 @@ time, and are competitive to GTOs only when high accuracy is required.
 
 \begin{textblock}{7}(10,15.0)
 \footnotesize
-\textbf{Table 3}:
+\textbf{Table 3}: Magnetic properties calculated at
+Hartree-Fock level of theory. GTO calculations by Dalton\cite{Dalton} 
+with gauge-including atomic orbitals (GIAO). Magnetizabilities are also computed 
+without GIAOs using different origins to test the origin dependence.
 \begin{table}
     \normalsize
     \centering
     \begin{tabular}{|r|crr|ccc|}
-\hline                   & \multicolumn{3}{c|}{Magnetizability (a.u.)}   &\multicolumn{3}{c|}{NMR shielding (ppm)}            \\
-                         & GIAO          & $(0,0,0)$\ \  & $(5,5,5)$\ \  & Dia             & Para             & Total    \\
+\hline                   &\multicolumn{3}{c|}{\textbf{Magnetizability (a.u.)}}
+                         &\multicolumn{3}{c|}{\textbf{NMR shielding (ppm)}}\\
+                         & GIAO          & $(0,0,0)$\ \  & $(5,5,5)$\ \  &$\xi^{dia}$   & $\xi^{para}$  &$\xi^{tot}$    \\
 \hline  \hspace{55mm}\   &\hspace{40mm}\ &\hspace{40mm}\ &\hspace{40mm}\ &\hspace{40mm}\ &\hspace{40mm}\ &\hspace{40mm}\ \\
 %LDA
 %	MRChem $10^{-2}$ &               &  -9.3721      &  -9.5864      &  444.6586     & -158.1337     &  286.5249     \\
