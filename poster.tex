@@ -1,5 +1,5 @@
-\documentclass[a0,draft,portrait]{a0poster}
-%\documentclass[a0,portrait]{a0poster}
+%\documentclass[a0,draft,portrait]{a0poster}
+\documentclass[a0,portrait]{a0poster}
 \usepackage{graphicx,color}
 \pagestyle{empty}
 \setcounter{secnumdepth}{0}
@@ -49,7 +49,7 @@
 using multiwavelets}
 \\
 \vspace{1cm}
-\LHead{\underline{Stig R. Jensen}$^{^{1,3}}$, Tor Fl\aa$^{^{2,3}}$, Luca
+\LHead{\underline{Stig R. Jensen},$^{^{1,3}}$ Tor Fl\aa$^{^{2,3}}$ and Luca
 Frediani$^{^{1,3}}$}\\
 \vspace{1cm}
 \end{center}
@@ -106,19 +106,19 @@ UiT - The Arctic University of Norway, NO-9037 Troms{\o}, Norway \\
 \LHead{Integral formulation linear response}
 \end{textblock}
 
-\begin{textblock}{7}(10,4)
+\begin{textblock}{7}(10,7.6)
 \LHead{Results}
 \end{textblock}
 
-\begin{textblock}{7}(10,18.5)
+\begin{textblock}{7}(10,18.8)
 \LHead{Conclusions}
 \end{textblock}
 
-\begin{textblock}{5}(10.4,11.75)
+\begin{textblock}{5}(10.4,12.25)
 \Subhead{LDA}
 \end{textblock}
 
-\begin{textblock}{5}(10.05,15.25)
+\begin{textblock}{5}(10.05,15.75)
 \Subhead{Hartree-Fock}
 \end{textblock}
 
@@ -133,7 +133,7 @@ require careful preoptimization in order to get reliable
 results on different molecular properties. The method comes with a large 
 prefactor, but the inherent low scaling combined with the possibility of 
 massively parallel algorithms will probably make MRMWs competitive with GTOs in 
-the future. We obtain molecular properties through linear response, and 
+the future. We compute molecular properties through linear response, and 
 demonstrate the accuracy of the method by computing a set of
 important electric and magnetic properties.
 \end{textblock}
@@ -228,12 +228,12 @@ orbitals $x_i$ and $y_i$. Using the projector onto the occupied space
 and the BSH operator of the unperturbed orbital energy $\epsilon_i$ shifted by 
 the perturbing frequency $\omega$
 \begin{equation}
-    2\hat{G}_i^{(\pm)} = \big[\hat{T} - (\epsilon_i \pm \omega)\big]^{-1} 
+    2\hat{G}_i^{(\pm)} = \Big[\hat{T} - (\epsilon_i \pm \omega)\Big]^{-1} 
 \end{equation}
 we arrive at the coupled linear response equations\cite{Sekino,Yanai}
 \end{textblock}
 
-\begin{textblock}{9.3}(0,19.7)
+\begin{textblock}{9.3}(0,20.0)
 \centering
 \textbf{The final working equations for dynamic linear response}
 \begin{eqnarray}
@@ -250,7 +250,7 @@ we arrive at the coupled linear response equations\cite{Sekino,Yanai}
 \end{eqnarray}
 \end{textblock}
 
-\begin{textblock}{4.3}(0,21.5)
+\begin{textblock}{4.3}(0,21.8)
 The response equations are solved using the same machinery as for the 
 ground-state SCF problem, and fully numerical representations of the response
 functions can be obtained to high accuracy. 
@@ -261,7 +261,7 @@ $\pert{\hamiltonian}{a}$ and $\pert{\hamiltonian}{b}$ are then obtained as
 \end{equation}
 \end{textblock}
 
-\begin{textblock}{5.0}(4.3,21.3)
+\begin{textblock}{5.0}(4.3,21.6)
 \begin{eqnarray}
     \pert{\coulomb}{1} \orbital_p &=& 
         \int\frac{\pert{\tilde{\rho}}{1}(r',r')\orbital_p(r)}{|r-r'|} \ud r' \\
@@ -275,13 +275,7 @@ $\pert{\hamiltonian}{a}$ and $\pert{\hamiltonian}{b}$ are then obtained as
 
 % Second column
 
-\begin{textblock}{7}(10,4.5)
-We test the performence of our linear response solver by computing a set of
-important electric and magnetic properties on the chiral molecule methyloxirane
-(CH$_3$CHCH$_2$O).
-\end{textblock}
-
-\begin{textblock}{7}(10,19.0)
+\begin{textblock}{7}(10,19.3)
 We have shown that by making use of the properties of the multiresolution
 MW basis we have strict control of the basis set error, and we are able to 
 reach the basis set limit (within a predefined accuracy) for several linear
@@ -292,10 +286,9 @@ The calculations are at present still demanding, both in terms of memory and CPU
 time, and are competitive to GTOs only when high accuracy is required.
 \end{textblock}
 
-\begin{textblock}{7}(10,20.5)
+\begin{textblock}{7}(10,20.7)
 % Change the reference heading style:
 \renewcommand\refname{\textnormal{\LHead{References}}}
-
 \bibliography{poster}
 %\bibliographystyle{abbrv}
 \bibliographystyle{plain}
@@ -303,42 +296,47 @@ time, and are competitive to GTOs only when high accuracy is required.
 
 %Figures
 
-\begin{textblock}{4.5}(4.8,7.0)
-    \includegraphics[scale=1.3, viewport = 85 400 550 760, clip]{figures/func_rep_2.pdf}
+\begin{textblock}{4.5}(5.0,7.0)
+    \includegraphics[scale=1.3, viewport = 85 420 550 760, clip]{figures/func_rep_2.pdf}
     \footnotesize
     \centering
     \\\textbf{Figure 1}: Scaling and wavelet projections of an s-type orbital.
 \end{textblock} 
 
-\begin{textblock}{3.0}(10,5.0)
-    \includegraphics[scale=0.60, viewport = 0 150 550 650, clip]{figures/methyloxirane_white.jpg}
+\begin{textblock}{7.0}(10.0,4.0)
+    \includegraphics[angle=-90, scale=1.40, viewport = 170 150 470 700, clip]{figures/grid.pdf}
     \footnotesize
     \centering
-    \\\textbf{Figure 2}: Methyloxirane molecule.
+    \\\textbf{Figure 2}: Adaptive grid for electron density of methyloxirane.
 \end{textblock} 
 
-\begin{textblock}{3.0}(13.0,5.0)
-    \includegraphics[angle=-90, scale=1.00, viewport = 170 150 470 700, clip]{figures/grid.pdf}
+\begin{textblock}{3.0}(14.2,9.0)
+    \includegraphics[scale=0.60, viewport = 0 180 550 650, clip]{figures/methyloxirane_white.jpg}
     \footnotesize
     \centering
-    \\\textbf{Figure 3}: Adaptive grid for electron density.
+    \\\textbf{Figure 3}: Methyloxirane molecule.
 \end{textblock} 
 
-\begin{textblock}{7}(10,8.0)
+\begin{textblock}{7}(10,8.1)
 \footnotesize
-\textbf{Table 1}:
+\textbf{Table 1}: Total energies at Hartree-Fock and LDA (SVWN5) levels of theory. GTO
+calculations by Dalton\cite{Dalton}. In the MRChem calculations, the orbitals are converged 
+to the given threshold (the overall accuracy in the calculations is set two orders of magnitude
+higher in order to get quadratic convergence in the energy).  
 \begin{table}
     \normalsize
     \centering
     \begin{tabular}{|r|cc|cc|}
-\hline                   &\multicolumn{2}{c|}{\textbf{Energy (a.u.)}}&   &               \\
-                         &Hartree-Fock   &LDA            &               &               \\
+\hline                   &\multicolumn{2}{c|}{\textbf{Energy (a.u.)}}
+						 &\multicolumn{2}{c|}{\textbf{CH$_3$CHCH$_2$O}}\\
+
+                         &Hartree-Fock   &LDA        &               &               \\
 \hline  \hspace{55mm}\   &\hspace{62mm}\ &\hspace{62mm}\ &\hspace{62mm}\ &\hspace{62mm}\ \\
 	MRChem $10^{-2}$ & -192.0425     & -191.5975     &               &               \\
 	MRChem $10^{-3}$ & -192.0002     & -191.5622     &               &               \\
 	MRChem $10^{-4}$ & -192.0000     & -191.5619     &               &               \\
 	                 &               &               &               &               \\
-        aug-cc-pVQZ      & -191.9968     & -191.5563     &               &               \\
+    aug-cc-pVQZ      & -191.9968     & -191.5563     &               &               \\
 %	aug-cc-pVTZ      & -191.9850     & -191.5432     &               &               \\
 	aug-cc-pVDZ      & -191.9357     & -191.4817     &               &               \\
 	    cc-pVQZ      & -191.9960     & -191.5549     &               &               \\
@@ -350,11 +348,11 @@ time, and are competitive to GTOs only when high accuracy is required.
     \end{table}
 \end{textblock}
 
-\begin{textblock}{7}(10,11.5)
+\begin{textblock}{7}(10,11.8)
 \footnotesize
-\textbf{Table 2}: Polarizability and optical rotation calculated at DFT (SVWN5) 
+\textbf{Table 2}: Polarizability and optical rotation calculated at LDA (SVWN5) 
 level of theory. Dynamic response at the sodium D line (589.3 nm) wavelength.
-GTO calculations by Dalton\cite{Dalton}.
+GTO calculations using gauge-including atomic orbitals (GIAO) by Dalton\cite{Dalton}.
 \begin{table}
     \normalsize
     \centering
@@ -398,7 +396,7 @@ GTO calculations by Dalton\cite{Dalton}.
     \end{table}
 \end{textblock}
 
-\begin{textblock}{7}(10,15.0)
+\begin{textblock}{7}(10,15.3)
 \footnotesize
 \textbf{Table 3}: Magnetic properties calculated at
 Hartree-Fock level of theory. GTO calculations by Dalton\cite{Dalton} 
